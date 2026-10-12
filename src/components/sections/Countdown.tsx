@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { invitation } from '@/config/invitation'
 import { useCountdown } from '@/hooks/useCountdown'
 import SectionHeading from '@/components/sections/SectionHeading'
+import WeddingCalendar from '@/components/sections/WeddingCalendar'
 import FallingPetals from '@/components/effects/FallingPetals'
 
 function TimeCell({ value, label }: { value: number; label: string }) {
@@ -61,6 +62,8 @@ export default function Countdown() {
         <p className="mt-10 text-center text-sm tracking-[0.3em] text-champagne/70">
           距离我们的婚礼 {past ? '' : '还有'}
         </p>
+
+        <WeddingCalendar />
       </div>
     </section>
   )
