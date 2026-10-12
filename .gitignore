@@ -1,0 +1,11 @@
+node_modules
+dist
+*.local
+.DS_Store
+
+# 参考站抓取的分析文件，不进仓库
+.ref
+# 原图太大，本地保留不进仓库
+photos-original
+
+public

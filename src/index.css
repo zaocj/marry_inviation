@@ -1,0 +1,132 @@
+@import 'tailwindcss';
+
+@theme {
+  /* silk-ribbon-dark-red 设计 token */
+  --color-primary: #931434;
+  --color-primary-dark: #750016;
+  --color-wine: #913b51;
+  --color-cream: #fefbf4;
+  --color-blush: #f8eef1;
+  --color-blush-deep: #efd9df;
+  --color-petal: #e8c4ce;
+  --color-champagne: #f3dfc3;
+  --color-gold: #c9a25e;
+  --color-ink: #2f2a26;
+  --color-sand: #a08b74;
+
+  --font-serif-sc: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  --font-calligraphy: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+  --font-script: 'Pattaya', 'Ma Shan Zheng', cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-serif-sc);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 氛围：花瓣飘落（参考站同款实现，纯 CSS 驱动） ---------- */
+@keyframes ambient-fall {
+  0% {
+    transform: translate3d(0, -6vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate3d(var(--sway, 0px), 48vh, 0) rotate(170deg);
+  }
+  100% {
+    transform: translate3d(0, 106vh, 0) rotate(340deg);
+    opacity: 0.7;
+  }
+}
+
+/* ---------- 信封火漆印章脉冲 ---------- */
+@keyframes seal-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 4px 20px rgba(147, 20, 52, 0.5),
+      inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 4px 32px rgba(147, 20, 52, 0.75),
+      inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* ---------- 文字扫光 ---------- */
+@keyframes shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.text-shine {
+  background: linear-gradient(
+    110deg,
+    var(--color-champagne) 40%,
+    #fff8e7 50%,
+    var(--color-champagne) 60%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+/* ---------- shadcn/ui Dialog 动画（data-state 驱动） ---------- */
+@keyframes overlay-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes dialog-show {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -47%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* ---------- 通用 ---------- */
+.paper-texture {
+  background-image: radial-gradient(rgba(147, 20, 52, 0.04) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  letter-spacing: 0.35em;
+}
+
+::selection {
+  background: rgba(147, 20, 52, 0.2);
+}
+
+/* ---------- Swiper 相册 ---------- */
+.gallery-swiper .swiper-pagination-bullet {
+  background: var(--color-primary);
+  opacity: 0.25;
+}
+.gallery-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+}
