@@ -87,26 +87,6 @@ body {
   animation: shine 4s linear infinite;
 }
 
-/* ---------- shadcn/ui Dialog 动画（data-state 驱动） ---------- */
-@keyframes overlay-show {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes dialog-show {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -47%) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
 /* ---------- 通用 ---------- */
 .paper-texture {
   background-image: radial-gradient(rgba(147, 20, 52, 0.04) 1px, transparent 1px);
