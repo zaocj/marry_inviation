@@ -6,14 +6,14 @@ export const invitation = {
   groom: {
     name: '赵杰',
     fullName: '赵杰',
-    father: '',
-    mother: '',
+    father: '赵壮虎',
+    mother: '刘永娟',
   },
   bride: {
     name: '梁紫艺',
     fullName: '梁紫艺',
     father: '',
-    mother: '',
+    mother: '张丽梅',
   },
 
   /** 婚礼时间（倒计时目标） */
