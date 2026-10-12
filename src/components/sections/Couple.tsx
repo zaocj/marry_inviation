@@ -37,16 +37,22 @@ function PersonCard({ role, name, fullName, father, mother, delay }: PersonCardP
 
       <div className="mx-auto mt-5 h-px w-16 bg-primary/20" />
 
-      <dl className="mt-5 space-y-2 text-sm text-ink/70">
-        <div className="flex justify-center gap-3">
-          <dt className="text-sand">父亲</dt>
-          <dd>{father}</dd>
-        </div>
-        <div className="flex justify-center gap-3">
-          <dt className="text-sand">母亲</dt>
-          <dd>{mother}</dd>
-        </div>
-      </dl>
+      {(father || mother) && (
+        <dl className="mt-5 space-y-2 text-sm text-ink/70">
+          {father && (
+            <div className="flex justify-center gap-3">
+              <dt className="text-sand">父亲</dt>
+              <dd>{father}</dd>
+            </div>
+          )}
+          {mother && (
+            <div className="flex justify-center gap-3">
+              <dt className="text-sand">母亲</dt>
+              <dd>{mother}</dd>
+            </div>
+          )}
+        </dl>
+      )}
     </motion.div>
   )
 }
