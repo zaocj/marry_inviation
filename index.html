@@ -14,6 +14,8 @@
     <meta property="og:image" content="https://minvitation.site/photos/header.webp" />
 
     <link rel="icon" type="image/webp" href="/assets/double-happiness-bg.webp" />
+    <!-- 首屏婚纱照：提前预载，避免开启请帖时图片还没解码完 -->
+    <link rel="preload" as="image" href="/photos/header.webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

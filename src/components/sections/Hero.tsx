@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { invitation } from '@/config/invitation'
 
@@ -6,7 +6,16 @@ interface HeroProps {
   opened: boolean
 }
 
-/** 封面：深红底 + 丝带 + 白色剪纸囍 + 新人名 + 婚期 */
+/** “&” 上的扫光：背景位移循环 */
+const SHINE_VARIANTS: Variants = {
+  off: { backgroundPosition: '-200% center' },
+  sweep: {
+    backgroundPosition: ['-200% center', '200% center'],
+    transition: { duration: 4, ease: 'linear', repeat: Infinity },
+  },
+}
+
+/** 封面：深红底 + 丝带 + 婚纱照（不裁切、大图）+ 新人名 + 婚期 */
 export default function Hero({ opened }: HeroProps) {
   const anim = (delay: number) => ({
     initial: { opacity: 0, y: 32 },
@@ -38,23 +47,36 @@ export default function Hero({ opened }: HeroProps) {
           Wedding Invitation
         </motion.p>
 
-        <motion.img
-          src="/assets/double-happiness-bg.webp"
-          alt="囍"
-          className="mt-8 h-24 w-auto brightness-0 invert sm:h-28"
+        {/* 封面婚纱照：金框大图，完整显示不裁切 */}
+        <motion.div
           {...anim(0.3)}
-        />
+          className="mt-6 w-[88vw] max-w-[min(400px,40.5svh)] rounded-2xl bg-gradient-to-b from-champagne via-gold to-champagne p-[3px] shadow-[0_18px_50px_rgba(0,0,0,0.4)] sm:mt-8"
+        >
+          <img
+            src="/photos/header.webp"
+            alt="我们的婚纱照"
+            fetchPriority="high"
+            className="aspect-[3/4] w-full rounded-[13px] bg-primary-dark object-cover"
+          />
+        </motion.div>
 
         <motion.h1
           {...anim(0.45)}
-          className="mt-8 font-calligraphy text-6xl leading-tight text-cream sm:text-7xl"
+          className="mt-7 font-calligraphy text-6xl leading-tight text-cream sm:mt-8 sm:text-7xl"
         >
           {invitation.groom.name}
-          <span className="text-shine mx-4 font-script text-5xl sm:text-6xl">&</span>
+          <motion.span
+            className="text-shine mx-4 font-script text-5xl sm:text-6xl"
+            variants={SHINE_VARIANTS}
+            initial="off"
+            animate="sweep"
+          >
+            &
+          </motion.span>
           {invitation.bride.name}
         </motion.h1>
 
-        <motion.div {...anim(0.6)} className="mt-8 flex flex-col items-center gap-2">
+        <motion.div {...anim(0.6)} className="mt-6 flex flex-col items-center gap-2 sm:mt-8">
           <p className="text-lg tracking-[0.4em] text-champagne">{invitation.dateText}</p>
           <p className="text-sm tracking-[0.3em] text-champagne/60">
             {invitation.weekdayText}
@@ -62,7 +84,7 @@ export default function Hero({ opened }: HeroProps) {
           </p>
         </motion.div>
 
-        <motion.p {...anim(0.75)} className="mt-10 text-sm tracking-[0.5em] text-cream/70">
+        <motion.p {...anim(0.75)} className="mt-7 text-sm tracking-[0.5em] text-cream/70 sm:mt-10">
           我们结婚啦
         </motion.p>
       </div>

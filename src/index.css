@@ -48,31 +48,7 @@ body {
   }
 }
 
-/* ---------- 信封火漆印章脉冲 ---------- */
-@keyframes seal-pulse {
-  0%,
-  100% {
-    box-shadow:
-      0 4px 20px rgba(147, 20, 52, 0.5),
-      inset 0 2px 4px rgba(255, 255, 255, 0.3);
-  }
-  50% {
-    box-shadow:
-      0 4px 32px rgba(147, 20, 52, 0.75),
-      inset 0 2px 4px rgba(255, 255, 255, 0.3);
-  }
-}
-
-/* ---------- 文字扫光 ---------- */
-@keyframes shine {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
-
+/* ---------- 文字扫光：渐变由 CSS 提供，位移动画交给 framer-motion ---------- */
 .text-shine {
   background: linear-gradient(
     110deg,
@@ -84,27 +60,6 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shine 4s linear infinite;
-}
-
-/* ---------- shadcn/ui Dialog 动画（data-state 驱动） ---------- */
-@keyframes overlay-show {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes dialog-show {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -47%) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
 }
 
 /* ---------- 通用 ---------- */
