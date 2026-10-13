@@ -4,34 +4,36 @@
 
 export const invitation = {
   groom: {
+    avatar: '/photos/groom_avatar.webp',
     name: '赵杰',
     fullName: '赵杰',
-    father: '赵壮虎',
-    mother: '刘永娟',
   },
   bride: {
+    avatar: '/photos/bride_avatar.webp',
     name: '梁紫艺',
     fullName: '梁紫艺',
-    father: '',
-    mother: '张丽梅',
   },
 
   /** 婚礼时间（倒计时目标） */
   date: '2027-01-01T10:00:00+08:00',
   dateText: '2027年1月1日',
   weekdayText: '星期五',
-  lunarText: '农历十一月廿四', 
+  lunarText: '农历十一月廿四',
+
+  /**
+   * 「添加到日历」写入的事件：start / end 用带时区的 ISO 时间，reminderMinutes 为提前提醒分钟数（0 不提醒）。
+   * 不填则用 date 起算 2 小时。
+   */
+  calendarEvent: {
+    start: '2027-01-01T10:00:00+08:00',
+    end: '2027-01-01T14:00:00+08:00',
+    reminderMinutes: 24 * 60,
+  },
 
   /** 喜讯 / 引言 */
   announcement: ['愿以余生 相守相伴', '谨备薄酒 恭候亲友'],
 
-  /** 典礼与婚宴 */
-  ceremony: {
-    title: '婚礼仪式',
-    time: '上午 11:00',
-    venue: '山西省太原清徐县清雅苑(二部)',
-    address: '山西省太原市清徐县',
-  },
+  /** 婚宴 */
   banquet: {
     title: '喜宴',
     reception: '迎宾 9:30',

@@ -1,6 +1,13 @@
+import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { invitation } from '@/config/invitation'
 import { cn } from '@/lib/utils'
+import { eventTextSummary } from '@/lib/weddingIcs'
+import {
+  addToCalendarHref,
+  copyEventText,
+  detectCalendarEnv,
+} from '@/lib/addToCalendar'
 
 /** 周一起始的星期表头（与参考站一致） */
 const WEEKDAYS = ['一', '二', '三', '四', '五', '六', '日']
@@ -24,30 +31,13 @@ function HeartMark({ className }: { className?: string }) {
   )
 }
 
-/** Google 日历时间格式：20270101T020000Z */
-function toGCalTime(date: Date) {
-  return date.toISOString().replace(/[-:]|\.\d{3}/g, '')
-}
-
-/** 「添加到日历」跳转 Google 日历，时间按 UTC 给出并用 ctz 声明婚期所在时区 */
-function googleCalendarUrl() {
-  const start = new Date(invitation.date)
-  const end = new Date(start.getTime() + 2 * 60 * 60 * 1000)
-  const location = `${invitation.banquet.venue}\n${invitation.banquet.address}`
-  const params = new URLSearchParams({
-    action: 'TEMPLATE',
-    text: `${invitation.groom.name} ♥ ${invitation.bride.name} 婚礼`,
-    dates: `${toGCalTime(start)}/${toGCalTime(end)}`,
-    ctz: 'Asia/Shanghai',
-    details: `诚挚邀请您莅临 ${invitation.groom.name} 与 ${invitation.bride.name} 的婚礼，地点：${location}`,
-    location,
-  })
-  return `https://www.google.com/calendar/render?${params.toString()}`
-}
-
 /** 婚期所在月份的日历：婚期当天用红心标记，下方可一键加入日历 */
 export default function WeddingCalendar() {
   const { year, month, day } = weddingDateParts(invitation.date)
+  // 只在挂载时判断一次，避免每次渲染都读 UA
+  const env = useMemo(() => detectCalendarEnv(), [])
+  const [showHint, setShowHint] = useState(false)
+  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'failed'>('idle')
 
   // 1 号是周几（周一为一周之首）、当月天数，全部用 UTC 计算避免时区偏移
   const firstWeekday = (new Date(Date.UTC(year, month - 1, 1)).getUTCDay() + 6) % 7
@@ -105,13 +95,35 @@ export default function WeddingCalendar() {
       </div>
 
       <a
-        href={googleCalendarUrl()}
-        target="_blank"
-        rel="noreferrer"
+        href={addToCalendarHref(env)}
+        // 桌面端直接下载 ics；iOS 必须同页打开，Safari 才会弹出系统日历
+        download={env === 'other' ? 'wedding.ics' : undefined}
+        onClick={() => {
+          // 内置浏览器里 ics 通常打不开（Android 微信有时能下载后交给日历），提示只作为兼底
+          if (env === 'inapp') setShowHint(true)
+        }}
         className="mt-3 text-[14px] text-champagne underline underline-offset-4 transition-opacity hover:opacity-80 sm:text-[16px]"
       >
         添加到日历
       </a>
+
+      {showHint && (
+        <div className="mt-3 w-full max-w-[304px] rounded-xl border border-champagne/30 bg-cream/10 px-4 py-3 text-center text-[12px] leading-relaxed text-cream/75 sm:max-w-[414px] sm:text-[13px]">
+          若没有打开日历，请点右上角「···」→「在浏览器打开」，再点一次「添加到日历」。
+          <button
+            type="button"
+            className="mt-2 block w-full text-champagne underline underline-offset-4"
+            onClick={async () => setCopyState((await copyEventText()) ? 'copied' : 'failed')}
+          >
+            {copyState === 'copied' ? '日程信息已复制' : '或复制日程信息，手动添加'}
+          </button>
+          {copyState === 'failed' && (
+            <p className="mt-2 select-all whitespace-pre-line text-left text-cream/70">
+              {eventTextSummary()}
+            </p>
+          )}
+        </div>
+      )}
     </motion.div>
   )
 }

@@ -5,7 +5,6 @@ import Envelope from '@/components/envelope/Envelope'
 import MusicToggle from '@/components/effects/MusicToggle'
 import Hero from '@/components/sections/Hero'
 import Announcement from '@/components/sections/Announcement'
-import Couple from '@/components/sections/Couple'
 import Gallery from '@/components/sections/Gallery'
 import Events from '@/components/sections/Events'
 import Countdown from '@/components/sections/Countdown'
@@ -59,7 +58,6 @@ export default function App() {
       <main>
         <Hero opened={opened} />
         <Announcement />
-        <Couple />
         <Gallery />
         <Events />
         <Countdown />

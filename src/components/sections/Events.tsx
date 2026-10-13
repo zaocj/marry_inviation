@@ -53,7 +53,7 @@ function EventCard({ title, time, extraTime, venue, address, delay }: EventCardP
   )
 }
 
-/** 典礼与婚宴信息（地图导航后续再加） */
+/** 婚宴信息（地图导航后续再加） */
 export default function Events() {
   return (
     <section className="relative overflow-hidden bg-blush py-24 sm:py-28">
@@ -67,23 +67,14 @@ export default function Events() {
       <div className="relative mx-auto max-w-4xl px-6">
         <SectionHeading eyebrow="When & Where" title="典礼与婚宴" />
 
-        <div className="flex flex-col gap-6 sm:flex-row sm:gap-10">
-          <EventCard
-            title={invitation.ceremony.title}
-            time={invitation.ceremony.time}
-            venue={invitation.ceremony.venue}
-            address={invitation.ceremony.address}
-            delay={0}
-          />
-          <EventCard
-            title={invitation.banquet.title}
-            time={invitation.banquet.time}
-            extraTime={invitation.banquet.reception}
-            venue={invitation.banquet.venue}
-            address={invitation.banquet.address}
-            delay={0.15}
-          />
-        </div>
+        <EventCard
+          title={invitation.banquet.title}
+          time={invitation.banquet.time}
+          extraTime={invitation.banquet.reception}
+          venue={invitation.banquet.venue}
+          address={invitation.banquet.address}
+          delay={0}
+        />
 
         {/* 地图：callnative=1 在手机上会唤起高德 APP，未安装则打开网页版 */}
         <motion.div

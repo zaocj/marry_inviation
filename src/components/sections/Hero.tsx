@@ -43,8 +43,11 @@ export default function Hero({ opened }: HeroProps) {
       />
 
       <div className="relative z-10 flex flex-col items-center">
-        <motion.p {...anim(0.15)} className="font-script text-3xl text-champagne sm:text-4xl">
-          Wedding Invitation
+        <motion.p
+          {...anim(0.15)}
+          className="font-calligraphy text-3xl tracking-[0.3em] text-champagne sm:text-4xl"
+        >
+          婚礼请柬
         </motion.p>
 
         {/* 封面婚纱照：金框大图，完整显示不裁切 */}
