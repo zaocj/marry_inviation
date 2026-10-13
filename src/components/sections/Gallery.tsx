@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { invitation } from '@/config/invitation'
 import SectionHeading from '@/components/sections/SectionHeading'
+import { REVEAL_FROM, REVEAL_TO, REVEAL_TRANSITION, REVEAL_VIEWPORT } from '@/lib/motion'
 
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
@@ -23,10 +24,10 @@ export default function Gallery() {
 
       <motion.div
         className="relative"
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        initial={REVEAL_FROM}
+        whileInView={REVEAL_TO}
+        viewport={REVEAL_VIEWPORT}
+        transition={REVEAL_TRANSITION}
       >
         <Swiper
           modules={[EffectCoverflow, Autoplay, Pagination]}

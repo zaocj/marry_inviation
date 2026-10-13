@@ -20,16 +20,6 @@ export const invitation = {
   weekdayText: '星期五',
   lunarText: '农历十一月廿四',
 
-  /**
-   * 「添加到日历」写入的事件：start / end 用带时区的 ISO 时间，reminderMinutes 为提前提醒分钟数（0 不提醒）。
-   * 不填则用 date 起算 2 小时。
-   */
-  calendarEvent: {
-    start: '2027-01-01T10:00:00+08:00',
-    end: '2027-01-01T14:00:00+08:00',
-    reminderMinutes: 24 * 60,
-  },
-
   /** 喜讯 / 引言 */
   announcement: ['愿以余生 相守相伴', '谨备薄酒 恭候亲友'],
 

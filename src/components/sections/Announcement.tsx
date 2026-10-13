@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Heart } from 'lucide-react'
 import { invitation } from '@/config/invitation'
 import { cn } from '@/lib/utils'
+import { REVEAL_FROM, REVEAL_TO, REVEAL_TRANSITION, REVEAL_VIEWPORT } from '@/lib/motion'
 
 interface PersonCardProps {
   role: string
@@ -20,10 +21,10 @@ function PersonCard({ role, fullName, avatar, delay, mirrored }: PersonCardProps
         'sm:gap-5 sm:px-6 sm:py-8 sm:text-left',
         mirrored ? 'sm:flex-row-reverse sm:text-right' : 'sm:flex-row',
       )}
-      initial={{ opacity: 0, y: 36 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      initial={REVEAL_FROM}
+      whileInView={REVEAL_TO}
+      viewport={REVEAL_VIEWPORT}
+      transition={{ ...REVEAL_TRANSITION, delay }}
     >
       {/* 头像：人物照片裁成圆形，object-position 偏上以保住脸部 */}
       <div className="h-20 w-20 flex-none rounded-full border border-champagne/70 bg-white/60 p-1 sm:h-28 sm:w-28 sm:p-1.5">
@@ -75,8 +76,8 @@ export default function Announcement() {
           className="font-script text-2xl text-gold"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={REVEAL_VIEWPORT}
+          transition={REVEAL_TRANSITION}
         >
           Good News
         </motion.p>
@@ -85,10 +86,10 @@ export default function Announcement() {
           <motion.h2
             key={line}
             className="mt-6 text-3xl font-bold tracking-[0.3em] text-primary sm:text-4xl"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15 * i, ease: [0.16, 1, 0.3, 1] }}
+            initial={REVEAL_FROM}
+            whileInView={REVEAL_TO}
+            viewport={REVEAL_VIEWPORT}
+            transition={{ ...REVEAL_TRANSITION, delay: 0.06 * i }}
           >
             {line}
           </motion.h2>
@@ -98,8 +99,8 @@ export default function Announcement() {
           className="mx-auto mt-10 h-px w-24 bg-primary/25"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={REVEAL_VIEWPORT}
+          transition={{ ...REVEAL_TRANSITION, delay: 0.2 }}
         />
       </div>
 
@@ -109,13 +110,13 @@ export default function Announcement() {
             role="新郎 GROOM"
             fullName={invitation.groom.fullName}
             avatar={invitation.groom.avatar}
-            delay={0.5}
+            delay={0.1}
           />
           <PersonCard
             role="新娘 BRIDE"
             fullName={invitation.bride.fullName}
             avatar={invitation.bride.avatar}
-            delay={0.6}
+            delay={0.16}
             mirrored
           />
 
@@ -128,10 +129,10 @@ export default function Announcement() {
       <div className="relative mx-auto mt-12 max-w-2xl px-6 text-center">
         <motion.p
           className="leading-loose text-ink/70"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.7 }}
+          initial={REVEAL_FROM}
+          whileInView={REVEAL_TO}
+          viewport={REVEAL_VIEWPORT}
+          transition={{ ...REVEAL_TRANSITION, delay: 0.28 }}
         >
           我们诚挚地邀请您
           <br />

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { invitation } from '@/config/invitation'
+import { REVEAL_FROM, REVEAL_TO, REVEAL_TRANSITION, REVEAL_VIEWPORT } from '@/lib/motion'
 
 /** 结尾感谢词 + 页脚 */
 export default function Thanks() {
@@ -15,20 +16,20 @@ export default function Thanks() {
       <div className="relative mx-auto max-w-2xl px-6 text-center">
         <motion.h2
           className="font-calligraphy text-4xl leading-snug text-primary sm:text-5xl"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          initial={REVEAL_FROM}
+          whileInView={REVEAL_TO}
+          viewport={REVEAL_VIEWPORT}
+          transition={REVEAL_TRANSITION}
         >
           {invitation.thanks.title}
         </motion.h2>
 
         <motion.p
           className="mt-6 leading-loose text-ink/70"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.15 }}
+          initial={REVEAL_FROM}
+          whileInView={REVEAL_TO}
+          viewport={REVEAL_VIEWPORT}
+          transition={{ ...REVEAL_TRANSITION, delay: 0.08 }}
         >
           {invitation.thanks.message}
         </motion.p>
@@ -37,8 +38,8 @@ export default function Thanks() {
           className="mt-10 flex flex-col items-center gap-3"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={REVEAL_VIEWPORT}
+          transition={{ ...REVEAL_TRANSITION, delay: 0.16 }}
         >
           <img src="/assets/double-happiness-bg.webp" alt="囍" className="h-14 w-auto" />
           <p className="font-calligraphy text-2xl text-ink/80">

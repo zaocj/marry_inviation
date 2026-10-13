@@ -4,6 +4,7 @@ import { useCountdown } from '@/hooks/useCountdown'
 import SectionHeading from '@/components/sections/SectionHeading'
 import WeddingCalendar from '@/components/sections/WeddingCalendar'
 import FallingPetals from '@/components/effects/FallingPetals'
+import { REVEAL_FROM, REVEAL_TO, REVEAL_TRANSITION, REVEAL_VIEWPORT } from '@/lib/motion'
 
 function TimeCell({ value, label }: { value: number; label: string }) {
   return (
@@ -40,17 +41,18 @@ export default function Countdown() {
             className="text-center text-2xl tracking-[0.3em] text-cream"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            viewport={REVEAL_VIEWPORT}
+            transition={REVEAL_TRANSITION}
           >
             我们已喜结连理 ❦
           </motion.p>
         ) : (
           <motion.div
             className="flex items-start justify-center gap-4 sm:gap-8"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            initial={REVEAL_FROM}
+            whileInView={REVEAL_TO}
+            viewport={REVEAL_VIEWPORT}
+            transition={REVEAL_TRANSITION}
           >
             <TimeCell value={days} label="天" />
             <TimeCell value={hours} label="时" />

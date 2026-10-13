@@ -3,6 +3,7 @@ import { CalendarDays, Clock, MapPin, Navigation } from 'lucide-react'
 import { invitation } from '@/config/invitation'
 import SectionHeading from '@/components/sections/SectionHeading'
 import VenueMap from '@/components/sections/VenueMap'
+import { REVEAL_FROM, REVEAL_TO, REVEAL_TRANSITION, REVEAL_VIEWPORT } from '@/lib/motion'
 
 interface EventCardProps {
   title: string
@@ -17,10 +18,10 @@ function EventCard({ title, time, extraTime, venue, address, delay }: EventCardP
   return (
     <motion.div
       className="flex-1 rounded-2xl border border-champagne/70 bg-white/70 p-8 shadow-lg shadow-primary/5"
-      initial={{ opacity: 0, y: 36 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      initial={REVEAL_FROM}
+      whileInView={REVEAL_TO}
+      viewport={REVEAL_VIEWPORT}
+      transition={{ ...REVEAL_TRANSITION, delay }}
     >
       <h3 className="text-center font-calligraphy text-3xl text-primary">{title}</h3>
       <div className="mx-auto mt-4 h-px w-14 bg-primary/20" />
@@ -79,10 +80,10 @@ export default function Events() {
         {/* 地图：callnative=1 在手机上会唤起高德 APP，未安装则打开网页版 */}
         <motion.div
           className="mt-10"
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          initial={REVEAL_FROM}
+          whileInView={REVEAL_TO}
+          viewport={REVEAL_VIEWPORT}
+          transition={REVEAL_TRANSITION}
         >
           <VenueMap />
           <div className="mt-5 text-center">

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { REVEAL_FROM, REVEAL_TO, REVEAL_TRANSITION, REVEAL_VIEWPORT } from '@/lib/motion'
 
 interface SectionHeadingProps {
   eyebrow: string
@@ -12,10 +13,10 @@ export default function SectionHeading({ eyebrow, title, dark }: SectionHeadingP
   return (
     <motion.div
       className="mb-12 flex flex-col items-center gap-3 text-center"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      initial={REVEAL_FROM}
+      whileInView={REVEAL_TO}
+      viewport={REVEAL_VIEWPORT}
+      transition={REVEAL_TRANSITION}
     >
       <span className={cn('font-script text-2xl', dark ? 'text-champagne/80' : 'text-gold')}>
         {eyebrow}
