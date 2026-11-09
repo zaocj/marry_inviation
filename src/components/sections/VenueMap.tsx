@@ -1,12 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import AMapLoader from '@amap/amap-jsapi-loader'
+import { loadAMap } from '@/lib/amap'
 import { invitation } from '@/config/invitation'
-
-declare global {
-  interface Window {
-    _AMapSecurityConfig?: { securityJsCode: string }
-  }
-}
 
 /** 高德地图内嵌卡片：填了 key 显示真实地图，未填显示占位卡；按钮均可跳转高德 APP */
 export default function VenueMap() {
@@ -21,15 +15,15 @@ export default function VenueMap() {
     let map: any = null
     let cancelled = false
 
-    window._AMapSecurityConfig = { securityJsCode: securityCode }
-    AMapLoader.load({ key, version: '2.0' })
+    loadAMap(key, securityCode)
       .then((AMap) => {
         if (cancelled || !containerRef.current) return
         map = new AMap.Map(containerRef.current, { zoom: 16, viewMode: '2D' })
         AMap.plugin('AMap.Geocoder', () => {
+          if (cancelled) return
           const geocoder = new AMap.Geocoder({ city })
           geocoder.getLocation(keyword, (status: string, result: { geocodes?: { location: unknown }[] }) => {
-            if (status === 'complete' && result.geocodes?.length) {
+            if (!cancelled && status === 'complete' && result.geocodes?.length) {
               const location = result.geocodes[0].location
               map?.setCenter(location)
               new AMap.Marker({ position: location, map, title: keyword })
@@ -37,7 +31,9 @@ export default function VenueMap() {
           })
         })
       })
-      .catch(() => setFailed(true))
+      .catch(() => {
+        if (!cancelled) setFailed(true)
+      })
 
     return () => {
       cancelled = true

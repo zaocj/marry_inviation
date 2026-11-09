@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@amap/amap-jsapi-loader':
-        specifier: ^1.0.1
-        version: 1.0.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -59,9 +56,6 @@ importers:
         version: 6.4.4(@types/node@26.6.5)(jiti@2.7.0)(lightningcss@1.32.0)
 
 packages:
-
-  '@amap/amap-jsapi-loader@1.0.1':
-    resolution: {integrity: sha512-nPyLKt7Ow/ThHLkSvn2etQlUzqxmTVgK7bIgwdBRTg2HK5668oN7xVxkaiRe3YZEzGzfV2XgH5Jmu2T73ljejw==}
 
   '@babel/code-frame@7.29.7':
     resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
@@ -903,8 +897,6 @@ packages:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
 
 snapshots:
-
-  '@amap/amap-jsapi-loader@1.0.1': {}
 
   '@babel/code-frame@7.29.7':
     dependencies:
