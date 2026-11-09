@@ -19,7 +19,7 @@ export default function Gallery() {
   return (
     <section className="relative overflow-hidden bg-cream py-24 sm:py-28">
       <div className="mx-auto max-w-5xl px-6">
-        <SectionHeading eyebrow="Our Moments" title="婚礼相册" />
+        <SectionHeading title="婚礼相册" />
       </div>
 
       <motion.div

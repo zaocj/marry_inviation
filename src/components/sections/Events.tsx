@@ -66,7 +66,7 @@ export default function Events() {
       />
 
       <div className="relative mx-auto max-w-4xl px-6">
-        <SectionHeading eyebrow="When & Where" title="典礼与婚宴" />
+        <SectionHeading title="典礼与婚宴" />
 
         <EventCard
           title={invitation.banquet.title}

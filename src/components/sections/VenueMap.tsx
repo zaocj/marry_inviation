@@ -57,7 +57,7 @@ export default function VenueMap() {
           <span className="relative font-calligraphy text-2xl text-primary">{keyword}</span>
           {!key && (
             <span className="relative text-xs text-sand">
-              在 src/config/invitation.ts 填入高德 key 后此处显示真实地图
+              请点击下方按钮查看路线
             </span>
           )}
         </div>

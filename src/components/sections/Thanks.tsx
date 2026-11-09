@@ -49,7 +49,7 @@ export default function Thanks() {
         </motion.div>
 
         <p className="mt-16 border-t border-champagne/60 pt-6 text-[11px] tracking-[0.3em] text-sand/70">
-          {invitation.groom.name} & {invitation.bride.name} · WEDDING INVITATION
+          {invitation.groom.name} & {invitation.bride.name} · 婚礼请柬
         </p>
       </div>
     </footer>

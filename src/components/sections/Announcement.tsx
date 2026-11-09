@@ -72,16 +72,6 @@ export default function Announcement() {
           className="pointer-events-none absolute -right-20 top-0 hidden h-full w-auto opacity-40 mix-blend-multiply sm:block"
         />
 
-        <motion.p
-          className="font-script text-2xl text-gold"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={REVEAL_VIEWPORT}
-          transition={REVEAL_TRANSITION}
-        >
-          Good News
-        </motion.p>
-
         {invitation.announcement.map((line, i) => (
           <motion.h2
             key={line}
@@ -107,13 +97,13 @@ export default function Announcement() {
       <div className="relative mx-auto mt-14 max-w-3xl px-6">
         <div className="relative grid grid-cols-2 items-stretch gap-4 sm:gap-6">
           <PersonCard
-            role="新郎 GROOM"
+            role="新郎"
             fullName={invitation.groom.fullName}
             avatar={invitation.groom.avatar}
             delay={0.1}
           />
           <PersonCard
-            role="新娘 BRIDE"
+            role="新娘"
             fullName={invitation.bride.fullName}
             avatar={invitation.bride.avatar}
             delay={0.16}

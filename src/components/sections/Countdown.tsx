@@ -34,7 +34,7 @@ export default function Countdown() {
       />
 
       <div className="relative mx-auto max-w-3xl px-6">
-        <SectionHeading eyebrow="Countdown" title="婚礼倒计时" dark />
+        <SectionHeading title="婚礼倒计时" dark />
 
         {past ? (
           <motion.p

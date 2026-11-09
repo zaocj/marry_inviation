@@ -3,13 +3,12 @@ import { cn } from '@/lib/utils'
 import { REVEAL_FROM, REVEAL_TO, REVEAL_TRANSITION, REVEAL_VIEWPORT } from '@/lib/motion'
 
 interface SectionHeadingProps {
-  eyebrow: string
   title: string
   dark?: boolean
 }
 
-/** 区块标题：英文花体小字 + 中文衬线标题 + 装饰分隔 */
-export default function SectionHeading({ eyebrow, title, dark }: SectionHeadingProps) {
+/** 区块标题：中文衬线标题 + 装饰分隔 */
+export default function SectionHeading({ title, dark }: SectionHeadingProps) {
   return (
     <motion.div
       className="mb-12 flex flex-col items-center gap-3 text-center"
@@ -18,9 +17,6 @@ export default function SectionHeading({ eyebrow, title, dark }: SectionHeadingP
       viewport={REVEAL_VIEWPORT}
       transition={REVEAL_TRANSITION}
     >
-      <span className={cn('font-script text-2xl', dark ? 'text-champagne/80' : 'text-gold')}>
-        {eyebrow}
-      </span>
       <h2
         className={cn(
           'text-3xl font-bold tracking-[0.2em] sm:text-4xl',
