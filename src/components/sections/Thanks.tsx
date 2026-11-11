@@ -49,8 +49,34 @@ export default function Thanks() {
         </motion.div>
 
         <p className="mt-16 border-t border-champagne/60 pt-6 text-[11px] tracking-[0.3em] text-sand/70">
-          {invitation.groom.name} & {invitation.bride.name} · 婚礼请柬
+          © {invitation.date.slice(0, 4)} {invitation.groom.name} & {invitation.bride.name} · 婚礼请柬
         </p>
+
+        {/* 备案信息：个人备案需展示主办者姓名，金色细描边 + 菱形坠饰呼应印章质感 */}
+        <motion.div
+          className="mt-5 flex justify-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={REVEAL_VIEWPORT}
+          transition={{ ...REVEAL_TRANSITION, delay: 0.24 }}
+        >
+          <a
+            href={invitation.icp.href}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="group inline-flex items-center gap-2.5 rounded-full border border-gold/25 bg-white/40 px-4 py-1.5 text-[11px] tracking-[0.16em] text-sand transition-colors duration-300 hover:border-gold/60 hover:text-primary"
+          >
+            <span
+              aria-hidden
+              className="h-1 w-1 rotate-45 bg-gold/70 transition-colors duration-300 group-hover:bg-primary/70"
+            />
+            <span className="text-ink/50 transition-colors duration-300 group-hover:text-primary/80">
+              {invitation.icp.owner}
+            </span>
+            <span aria-hidden className="h-2.5 w-px bg-gold/30" />
+            {invitation.icp.number}
+          </a>
+        </motion.div>
       </div>
     </footer>
   )

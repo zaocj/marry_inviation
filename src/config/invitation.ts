@@ -55,6 +55,14 @@ export const invitation = {
     title: '感谢你们的见证与祝福',
     message: '人生最美好的时刻，有幸与你们一同分享。',
   },
+
+  /** 页脚备案信息 */
+  icp: {
+    number: '晋ICP备2026016139号-1',
+    href: 'https://beian.miit.gov.cn/',
+    /** 个人备案的主办者姓名 */
+    owner: '赵杰',
+  },
 }
 
 export type Invitation = typeof invitation
