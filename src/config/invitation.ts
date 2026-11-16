@@ -119,7 +119,7 @@ export const parentFamilies: Record<ParentAudience, ParentFamily> = {
       lunarText: shared.lunarText,
       banquet: {
         ...shared.banquet,
-        venue: '山西省太原市清徐县清徐喜来澄大酒店',
+        venue: '山西省太原市清徐县清徐喜来澄大酒店6楼',
         address: '太原市清徐县039省道东侧',
       },
       amap: {
@@ -186,7 +186,7 @@ export function getInvitation(pathname: string) {
     ? {
         pageTitle: brideFirst
           ? `女儿${brideName}与女婿${groomName} · 婚礼请柬`
-          : `${hostLine} · ${groomName}与${brideName}婚礼`,
+          : `儿子${groomName}与儿媳${brideName} · 婚礼请柬`,
         groomRole: family.groomRole,
         brideRole: family.brideRole,
         hosts,
