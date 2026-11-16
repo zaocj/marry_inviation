@@ -1,12 +1,11 @@
 /**
  * 请柬全部文案与数据 —— 换成你自己的信息只需要改这个文件。
  *
- * 三个版本，用网址参数区分（发给谁就用哪条链接）：
+ * 三个版本，用网址路径区分（发给谁就用哪条链接）：
  *   新人版：https://你的域名/
- *   男方父母版：https://你的域名/?from=groom-parents
- *   女方父母版：https://你的域名/?from=bride-parents
- *   兼容旧链接：https://你的域名/?from=parents（等同男方父母版）
- *   未填写 from 或其他值：一律展示原来的新人版。
+ *   男方父母版：https://你的域名/groom-parents
+ *   女方父母版：https://你的域名/bride-parents
+ *   根路径或其他路径：一律展示原来的新人版，不再通过查询参数切换版本。
  *
  * 注意：index.html 里的 title / og 标签是静态的（微信、iMessage 抓不到 JS 渲染结果），
  * 所以那里写的是不带发送人视角的描述。
@@ -150,17 +149,17 @@ const coupleCopy = {
     },
   }
 
-/** 仅接受这三个明确的父母版参数，其余参数回退到原来的新人版。 */
-export function resolveAudience(search: string): Audience {
-  const from = new URLSearchParams(search).get('from')
-  if (from === 'parents' || from === 'groom-parents') return 'groom-parents'
-  if (from === 'bride-parents') return 'bride-parents'
+/** 按路径识别父母版，兼容目录入口末尾的斜杠，其余路径使用新人版。 */
+export function resolveAudience(pathname: string): Audience {
+  const path = pathname.replace(/\/+$/, '')
+  if (path === '/groom-parents') return 'groom-parents'
+  if (path === '/bride-parents') return 'bride-parents'
   return 'couple'
 }
 
-/** 纯配置解析函数，便于验证参数及以后扩展独立页面。 */
-export function getInvitation(search: string) {
-  const audience = resolveAudience(search)
+/** 纯配置解析函数，便于验证路径及以后扩展独立页面。 */
+export function getInvitation(pathname: string) {
+  const audience = resolveAudience(pathname)
   const family = audience === 'couple' ? null : parentFamilies[audience]
   const brideFirst = audience === 'bride-parents'
   const hosts: Host[] = family && !brideFirst
@@ -218,6 +217,6 @@ export function getInvitation(search: string) {
   }
 }
 
-export const invitation = getInvitation(typeof window === 'undefined' ? '' : window.location.search)
+export const invitation = getInvitation(typeof window === 'undefined' ? '/' : window.location.pathname)
 
 export type Invitation = typeof invitation
