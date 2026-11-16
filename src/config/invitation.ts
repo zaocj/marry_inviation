@@ -113,10 +113,10 @@ export const parentFamilies: Record<ParentAudience, ParentFamily> = {
     groomRole: '女婿',
     brideRole: '女儿',
     event: {
-      date: shared.date,
-      dateText: shared.dateText,
-      weekdayText: shared.weekdayText,
-      lunarText: shared.lunarText,
+      date: '2027-01-02T10:00:00+08:00',
+      dateText: '2027年1月2日',
+      weekdayText: '星期六',
+      lunarText: '农历十一月廿五',
       banquet: {
         ...shared.banquet,
         venue: '山西省太原市清徐县清徐喜来澄大酒店6楼',
