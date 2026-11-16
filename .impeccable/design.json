@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T08:25:51.903646+00:00",
+  "title": "Design System: 婚礼电子请柬",
+  "extensions": {
+    "colorMeta": {
+      "couple-primary": {
+        "role": "primary",
+        "displayName": "couple-primary",
+        "canonical": "#931434",
+        "tonalRamp": [
+          "oklch(15% 0.0477 14.32)",
+          "oklch(26% 0.0955 14.32)",
+          "oklch(38% 0.1352 14.32)",
+          "oklch(49% 0.1591 14.32)",
+          "oklch(61% 0.1591 14.32)",
+          "oklch(72% 0.1352 14.32)",
+          "oklch(84% 0.0796 14.32)",
+          "oklch(95% 0.0239 14.32)"
+        ]
+      },
+      "couple-primary-dark": {
+        "role": "neutral",
+        "displayName": "couple-primary-dark",
+        "canonical": "#750016",
+        "tonalRamp": [
+          "oklch(15% 0.0429 21.77)",
+          "oklch(26% 0.0858 21.77)",
+          "oklch(38% 0.1216 21.77)",
+          "oklch(49% 0.1431 21.77)",
+          "oklch(61% 0.1431 21.77)",
+          "oklch(72% 0.1216 21.77)",
+          "oklch(84% 0.0715 21.77)",
+          "oklch(95% 0.0215 21.77)"
+        ]
+      },
+      "couple-wine": {
+        "role": "neutral",
+        "displayName": "couple-wine",
+        "canonical": "#913b51",
+        "tonalRamp": [
+          "oklch(15% 0.0354 6.80)",
+          "oklch(26% 0.0707 6.80)",
+          "oklch(38% 0.1002 6.80)",
+          "oklch(49% 0.1179 6.80)",
+          "oklch(61% 0.1179 6.80)",
+          "oklch(72% 0.1002 6.80)",
+          "oklch(84% 0.0589 6.80)",
+          "oklch(95% 0.0177 6.80)"
+        ]
+      },
+      "couple-cream": {
+        "role": "neutral",
+        "displayName": "couple-cream",
+        "canonical": "#fefbf4",
+        "tonalRamp": [
+          "oklch(15% 0.0029 87.47)",
+          "oklch(26% 0.0059 87.47)",
+          "oklch(38% 0.0083 87.47)",
+          "oklch(49% 0.0098 87.47)",
+          "oklch(61% 0.0098 87.47)",
+          "oklch(72% 0.0083 87.47)",
+          "oklch(84% 0.0049 87.47)",
+          "oklch(95% 0.0015 87.47)"
+        ]
+      },
+      "couple-blush": {
+        "role": "neutral",
+        "displayName": "couple-blush",
+        "canonical": "#f8eef1",
+        "tonalRamp": [
+          "oklch(15% 0.0034 357.00)",
+          "oklch(26% 0.0069 357.00)",
+          "oklch(38% 0.0097 357.00)",
+          "oklch(49% 0.0115 357.00)",
+          "oklch(61% 0.0115 357.00)",
+          "oklch(72% 0.0097 357.00)",
+          "oklch(84% 0.0057 357.00)",
+          "oklch(95% 0.0017 357.00)"
+        ]
+      },
+      "couple-blush-deep": {
+        "role": "neutral",
+        "displayName": "couple-blush-deep",
+        "canonical": "#efd9df",
+        "tonalRamp": [
+          "oklch(15% 0.0077 359.19)",
+          "oklch(26% 0.0153 359.19)",
+          "oklch(38% 0.0217 359.19)",
+          "oklch(49% 0.0255 359.19)",
+          "oklch(61% 0.0255 359.19)",
+          "oklch(72% 0.0217 359.19)",
+          "oklch(84% 0.0128 359.19)",
+          "oklch(95% 0.0038 359.19)"
+        ]
+      },
+      "couple-petal": {
+        "role": "neutral",
+        "displayName": "couple-petal",
+        "canonical": "#e8c4ce",
+        "tonalRamp": [
+          "oklch(15% 0.0128 359.46)",
+          "oklch(26% 0.0257 359.46)",
+          "oklch(38% 0.0364 359.46)",
+          "oklch(49% 0.0428 359.46)",
+          "oklch(61% 0.0428 359.46)",
+          "oklch(72% 0.0364 359.46)",
+          "oklch(84% 0.0214 359.46)",
+          "oklch(95% 0.0064 359.46)"
+        ]
+      },
+      "couple-champagne": {
+        "role": "secondary",
+        "displayName": "couple-champagne",
+        "canonical": "#f3dfc3",
+        "tonalRamp": [
+          "oklch(15% 0.0129 76.34)",
+          "oklch(26% 0.0259 76.34)",
+          "oklch(38% 0.0366 76.34)",
+          "oklch(49% 0.0431 76.34)",
+          "oklch(61% 0.0431 76.34)",
+          "oklch(72% 0.0366 76.34)",
+          "oklch(84% 0.0216 76.34)",
+          "oklch(95% 0.0065 76.34)"
+        ]
+      },
+      "couple-gold": {
+        "role": "secondary",
+        "displayName": "couple-gold",
+        "canonical": "#c9a25e",
+        "tonalRamp": [
+          "oklch(15% 0.0294 80.20)",
+          "oklch(26% 0.0588 80.20)",
+          "oklch(38% 0.0832 80.20)",
+          "oklch(49% 0.0979 80.20)",
+          "oklch(61% 0.0979 80.20)",
+          "oklch(72% 0.0832 80.20)",
+          "oklch(84% 0.0490 80.20)",
+          "oklch(95% 0.0147 80.20)"
+        ]
+      },
+      "couple-ink": {
+        "role": "neutral",
+        "displayName": "couple-ink",
+        "canonical": "#2f2a26",
+        "tonalRamp": [
+          "oklch(15% 0.0031 61.07)",
+          "oklch(26% 0.0062 61.07)",
+          "oklch(38% 0.0087 61.07)",
+          "oklch(49% 0.0103 61.07)",
+          "oklch(61% 0.0103 61.07)",
+          "oklch(72% 0.0087 61.07)",
+          "oklch(84% 0.0051 61.07)",
+          "oklch(95% 0.0015 61.07)"
+        ]
+      },
+      "couple-sand": {
+        "role": "neutral",
+        "displayName": "couple-sand",
+        "canonical": "#a08b74",
+        "tonalRamp": [
+          "oklch(15% 0.0125 69.54)",
+          "oklch(26% 0.0249 69.54)",
+          "oklch(38% 0.0353 69.54)",
+          "oklch(49% 0.0416 69.54)",
+          "oklch(61% 0.0416 69.54)",
+          "oklch(72% 0.0353 69.54)",
+          "oklch(84% 0.0208 69.54)",
+          "oklch(95% 0.0062 69.54)"
+        ]
+      },
+      "parents-red": {
+        "role": "primary",
+        "displayName": "parents-red",
+        "canonical": "#a51020",
+        "tonalRamp": [
+          "oklch(15% 0.0534 24.16)",
+          "oklch(26% 0.1069 24.16)",
+          "oklch(38% 0.1514 24.16)",
+          "oklch(49% 0.1781 24.16)",
+          "oklch(61% 0.1781 24.16)",
+          "oklch(72% 0.1514 24.16)",
+          "oklch(84% 0.0891 24.16)",
+          "oklch(95% 0.0267 24.16)"
+        ]
+      },
+      "parents-deep-red": {
+        "role": "primary",
+        "displayName": "parents-deep-red",
+        "canonical": "#790d1c",
+        "tonalRamp": [
+          "oklch(15% 0.0418 21.54)",
+          "oklch(26% 0.0836 21.54)",
+          "oklch(38% 0.1184 21.54)",
+          "oklch(49% 0.1393 21.54)",
+          "oklch(61% 0.1393 21.54)",
+          "oklch(72% 0.1184 21.54)",
+          "oklch(84% 0.0696 21.54)",
+          "oklch(95% 0.0209 21.54)"
+        ]
+      },
+      "parents-paper-red": {
+        "role": "primary",
+        "displayName": "parents-paper-red",
+        "canonical": "#b51c2b",
+        "tonalRamp": [
+          "oklch(15% 0.0556 23.19)",
+          "oklch(26% 0.1113 23.19)",
+          "oklch(38% 0.1576 23.19)",
+          "oklch(49% 0.1854 23.19)",
+          "oklch(61% 0.1854 23.19)",
+          "oklch(72% 0.1576 23.19)",
+          "oklch(84% 0.0927 23.19)",
+          "oklch(95% 0.0278 23.19)"
+        ]
+      },
+      "parents-gold": {
+        "role": "secondary",
+        "displayName": "parents-gold",
+        "canonical": "#f3d9a0",
+        "tonalRamp": [
+          "oklch(15% 0.0236 86.22)",
+          "oklch(26% 0.0472 86.22)",
+          "oklch(38% 0.0669 86.22)",
+          "oklch(49% 0.0787 86.22)",
+          "oklch(61% 0.0787 86.22)",
+          "oklch(72% 0.0669 86.22)",
+          "oklch(84% 0.0393 86.22)",
+          "oklch(95% 0.0118 86.22)"
+        ]
+      },
+      "parents-muted": {
+        "role": "secondary",
+        "displayName": "parents-muted",
+        "canonical": "#e4bd8c",
+        "tonalRamp": [
+          "oklch(15% 0.0235 72.75)",
+          "oklch(26% 0.0469 72.75)",
+          "oklch(38% 0.0665 72.75)",
+          "oklch(49% 0.0782 72.75)",
+          "oklch(61% 0.0782 72.75)",
+          "oklch(72% 0.0665 72.75)",
+          "oklch(84% 0.0391 72.75)",
+          "oklch(95% 0.0117 72.75)"
+        ]
+      },
+      "parents-rule": {
+        "role": "secondary",
+        "displayName": "parents-rule",
+        "canonical": "#d6ab6e",
+        "tonalRamp": [
+          "oklch(15% 0.0280 75.32)",
+          "oklch(26% 0.0559 75.32)",
+          "oklch(38% 0.0793 75.32)",
+          "oklch(49% 0.0932 75.32)",
+          "oklch(61% 0.0932 75.32)",
+          "oklch(72% 0.0793 75.32)",
+          "oklch(84% 0.0466 75.32)",
+          "oklch(95% 0.0140 75.32)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "couple-body": {
+        "displayName": "原版衬线",
+        "purpose": "保留全局字体；不使用父母本地字体。"
+      },
+      "parents-display": {
+        "displayName": "父母书法标题",
+        "purpose": "仅父母主题；本地 WOFF2 与局部覆盖。"
+      },
+      "parents-body": {
+        "displayName": "父母衬线正文",
+        "purpose": "欢迎文案、婚宴与辅助信息。"
+      }
+    },
+    "shadows": [
+      {
+        "name": "parents-envelope",
+        "value": "0 24px 65px #39030d66",
+        "purpose": "实体红纸封套。"
+      },
+      {
+        "name": "parents-music",
+        "value": "0 4px 16px #39030d33",
+        "purpose": "父母版悬浮音乐按钮。"
+      }
+    ],
+    "motion": [
+      {
+        "name": "parents-paper-fold",
+        "value": ".6s cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "折页翻转 180deg、内页上移 20px。"
+      },
+      {
+        "name": "parents-cover-exit",
+        "value": "duration .65s; delay .45s; y -32px; opacity 0",
+        "purpose": "开启后封面退出。"
+      },
+      {
+        "name": "parents-reduced-motion",
+        "value": "prefers-reduced-motion: reduce; CSS animation/transition none; cover fade .15s",
+        "purpose": "取消父母版折页、旋转与平移，缩短交接。"
+      },
+      {
+        "name": "parents-control-press",
+        "value": "background .2s",
+        "purpose": "开启与导航按钮按下反馈。"
+      },
+      {
+        "name": "shared-music-spin",
+        "value": "6s linear infinite",
+        "purpose": "音乐播放时旋转，父母减弱动态模式取消。"
+      },
+      {
+        "name": "parents-gallery-autoplay",
+        "value": "2000ms",
+        "purpose": "已开启、相册至少25%可见、页面前台、启用自动播放且未触摸时循环；触摸释放或翻页后重新计时。"
+      },
+      {
+        "name": "parents-gallery-slide",
+        "value": "350ms; reduced motion 0ms",
+        "purpose": "触摸滑动和自动翻页的过渡。"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "parents-narrow",
+        "value": "(max-width: 360px)"
+      },
+      {
+        "name": "parents-short",
+        "value": "(max-height: 700px)"
+      },
+      {
+        "name": "parents-hide-cover-note",
+        "value": "(max-height: 620px)"
+      },
+      {
+        "name": "parents-landscape-cover",
+        "value": "(max-height: 500px) and (min-width: 600px)"
+      },
+      {
+        "name": "parents-short-narrow-cover",
+        "value": "(max-height: 500px) and (max-width: 599px)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "原版开启按钮",
+      "kind": "button",
+      "refersTo": "couple-button",
+      "description": "保留原新人版酒红胶囊按钮。",
+      "html": "<button class=\"ds-couple-button\">开启喜帖</button>",
+      "css": ".ds-couple-button{background:var(--color-primary,#931434);color:var(--color-cream,#fefbf4);border:0;border-radius:9999px;padding:12px 40px;font:14px 'Noto Serif SC',serif;letter-spacing:.4em;transition:transform .15s}.ds-couple-button:hover{transform:scale(1.05)}.ds-couple-button:active{transform:scale(.95)}.ds-couple-button:focus-visible{outline:2px solid var(--color-primary,#931434);outline-offset:6px}"
+    },
+    {
+      "name": "父母版开启按钮",
+      "kind": "button",
+      "refersTo": "parents-open",
+      "description": "深红纸面、细金框、圆形囍封签。",
+      "html": "<button class=\"ds-parents-open\"><span class=\"ds-seal\" aria-hidden=\"true\">囍</span>开启喜帖<svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-parents-open{font-family:'Parents Serif','Noto Serif SC','Songti SC',serif;display:flex;align-items:center;justify-content:center;gap:10px;width:188px;height:48px;padding:0;border:1px solid var(--parents-rule,#d6ab6e);border-radius:0;background:var(--parents-deep-red,#790d1c);color:var(--parents-gold,#f3d9a0);font-size:14px;letter-spacing:.14em;transition:background .2s;cursor:pointer}.ds-seal{display:grid;place-items:center;width:27px;height:27px;border:1px solid var(--parents-rule,#d6ab6e);border-radius:50%;font-size:17px;letter-spacing:0}.ds-parents-open:active{background:#600815}.ds-parents-open:focus-visible{outline:2px solid var(--parents-gold,#f3d9a0);outline-offset:6px;}.ds-parents-open:disabled{cursor:default}@media(prefers-reduced-motion:reduce){.ds-parents-open{transition:none}}"
+    },
+    {
+      "name": "父母版婚宴导航",
+      "kind": "nav",
+      "refersTo": "parents-navigation",
+      "description": "48px 整宽触控入口，在当前页打开婚宴高德导航。",
+      "html": "<a class=\"ds-parents-navigation\" href=\"https://uri.amap.com/search?keyword=%E6%B8%85%E9%9B%85%E8%8B%91&city=%E5%A4%AA%E5%8E%9F&callnative=1\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg>查看婚宴导航</a>",
+      "css": ".ds-parents-navigation{font-family:'Parents Serif','Noto Serif SC','Songti SC',serif;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:48px;background:var(--parents-gold,#f3d9a0);color:var(--parents-deep-red,#790d1c);font-size:15px;letter-spacing:.12em;text-decoration:none;transition:background .2s}.ds-parents-navigation:active{background:#ffebc0}.ds-parents-navigation:focus-visible{outline:2px solid var(--parents-gold,#f3d9a0);outline-offset:6px;}@media(prefers-reduced-motion:reduce){.ds-parents-navigation{transition:none}}"
+    },
+    {
+      "name": "父母版相册控制",
+      "kind": "button",
+      "refersTo": "parents-gallery-control",
+      "description": "照片下方靠左成组的触摸提示、计数与48px暂停／继续按钮；右侧预留悬浮音乐空间，相册每2秒循环。",
+      "html": "<div class=\"ds-gallery-status\"><span class=\"ds-gallery-hint\">左右滑动</span><span aria-live=\"off\">01 / 12</span><button type=\"button\" aria-label=\"暂停相册自动播放\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M9 5v14M15 5v14\"/></svg></button></div>",
+      "css": ".ds-gallery-status{font-family:'Parents Serif','Noto Serif SC','Songti SC',serif;display:grid;grid-template-columns:auto auto 48px;justify-content:start;align-items:center;gap:12px;min-height:48px;margin-top:10px;color:var(--parents-gold,#f3d9a0);font-size:13px;font-variant-numeric:tabular-nums}.ds-gallery-hint{color:var(--parents-muted,#e4bd8c);font-size:12px;letter-spacing:.1em}.ds-gallery-status button{display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--parents-rule,#d6ab6e);border-radius:0;color:inherit;background:transparent;touch-action:manipulation}.ds-gallery-status button:active{background:var(--parents-deep-red,#790d1c)}.ds-gallery-status button:focus-visible{outline:2px solid var(--parents-gold,#f3d9a0);outline-offset:6px}"
+    },
+    {
+      "name": "父母版双线纸框",
+      "kind": "card",
+      "description": "封套内页的直角金色双线纸框。",
+      "html": "<div class=\"ds-paper-frame\"><p class=\"ds-paper-title\">婚礼请柬</p><p class=\"ds-paper-caption\">两姓缔良缘 · 一帖邀至亲</p></div>",
+      "css": ".ds-paper-frame{position:relative;background:var(--parents-paper-red,#b51c2b);color:var(--parents-gold,#f3d9a0);border:1px solid var(--parents-rule,#d6ab6e);border-radius:0;padding:28px 16px;text-align:center}.ds-paper-frame::before{content:\"\";position:absolute;inset:5px;border:1px solid #d6ab6e66;pointer-events:none}.ds-paper-title{margin:0;font:400 39px \"Parents Calligraphy\",\"Ma Shan Zheng\",\"Songti SC\",serif;letter-spacing:.2em;padding-left:.2em}.ds-paper-caption{margin:10px 0 0;font-family:'Parents Serif','Noto Serif SC','Songti SC',serif;color:var(--parents-muted,#e4bd8c);font-size:12px;letter-spacing:.12em}"
+    },
+    {
+      "name": "父母版婚宴面板",
+      "kind": "card",
+      "refersTo": "parents-event",
+      "description": "始终单列的深红婚宴面板，内容标签与数值分列。",
+      "html": "<section class=\"ds-event\"><h2>喜宴之约</h2><div><strong>2027年1月1日</strong><p>农历十一月廿四 · 星期五</p><dl><div><dt>喜宴开席</dt><dd>中午 12:00</dd></div><div><dt>婚宴地点</dt><dd>山西省太原清徐县清雅苑(二部)</dd></div></dl></div></section>",
+      "css": ".ds-event{font-family:'Parents Serif','Noto Serif SC','Songti SC',serif;padding:30px 20px;background:var(--parents-deep-red,#790d1c);color:var(--parents-gold,#f3d9a0)}.ds-event h2{margin:0 0 28px;font:400 36px 'Parents Calligraphy','Ma Shan Zheng',serif;letter-spacing:.1em;text-align:center}.ds-event strong{display:block;text-align:center;font-size:23px;font-weight:500}.ds-event p{color:var(--parents-muted,#e4bd8c);font-size:13px;text-align:center}.ds-event dt{color:var(--parents-muted,#e4bd8c);font-size:13px}.ds-event dl{display:grid;gap:22px;margin:27px 0}.ds-event dl>div{display:grid;grid-template-columns:64px 1fr;gap:12px}.ds-event dd{margin:0;font-size:14px;line-height:1.8}"
+    }
+  ],
+  "narrative": {
+    "northStar": "红纸金帖",
+    "overview": "此项目保留两套有明确边界的视觉系统。新人版沿用丝带、花枝、奶油纸面与酒红色；父母版以「红纸金帖」为方向，用朱红纸面、金色双线框、书法标题和真实婚纱照表达正式而亲切的家庭邀约。\n\n父母版只作用于 `.parents-theme` 内的独立封面与正文。无 `from` 或未知值进入原新人版；`parents`、`groom-parents` 进入男方父母版，`bride-parents` 进入女方父母版。两家父母共用手机触屏单列版式，称呼、姓名顺序与婚宴资料由各自配置决定。",
+    "keyCharacteristics": [
+      "两套主题隔离，原入口保留。",
+      "父母版从封套到正文持续红底金字。",
+      "真实照片、单列触屏阅读与可暂停的两秒轮播。"
+    ],
+    "rules": [
+      {
+        "name": "The Theme Boundary Rule",
+        "body": "父母版仅覆盖自身容器内的局部变量，不重定义原版全局颜色。",
+        "section": "colors"
+      },
+      {
+        "name": "The Local Font Rule",
+        "body": "Parents Calligraphy 与 Parents Serif 仅用于父母版；保留原版全局字体栈。",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do 将父母版颜色与字体限定在父母主题容器内。",
+      "Do 使用现有真实婚纱照、音乐和备案资料。",
+      "Do 保留男方儿子／儿媳顺序及女方女儿／女婿顺序。",
+      "Do 保留开启后的焦点交接、键盘焦点与减弱动态支持。",
+      "Do 使用触摸滑动、至少 48px 的主要触控按钮和按下反馈。"
+    ],
+    "donts": [
+      "Don't 用父母版红金色覆盖原版全局 token。",
+      "Don't 为女方版本补造父母姓名或父母署名。",
+      "Don't 移除相册的暂停控制，或在宾客触摸后强制恢复页面自动滚动。",
+      "Don't 将本地父母字体的作用域扩展至原新人版。",
+      "Don't 为父母版添加桌面双栏、鼠标拖动或相册翻页箭头。"
+    ]
+  }
+}

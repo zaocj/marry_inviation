@@ -10,10 +10,13 @@ import Events from '@/components/sections/Events'
 import Countdown from '@/components/sections/Countdown'
 import Thanks from '@/components/sections/Thanks'
 import { useAutoScroll } from '@/hooks/useAutoScroll'
+import ParentsEnvelope from '@/components/parents/ParentsEnvelope'
+import ParentsInvitation from '@/components/parents/ParentsInvitation'
 
 export default function App() {
   const [opened, setOpened] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
+  const isParents = invitation.audience !== 'couple'
 
   // 父母版与新人版的浏览器标题不同，index.html 里写的是新人版
   useEffect(() => {
@@ -51,22 +54,28 @@ export default function App() {
     return detach
   }, [])
 
-  // 开启请帖后自动缓慢向下滚动，用户自己滚动就取消
+  // 所有版本开启后缓慢自动滚动；宾客触摸或主动滚动时停止。
   useAutoScroll(opened)
 
   const handleOpen = () => setOpened(true)
 
   return (
-    <div className="min-h-screen bg-cream font-serif-sc text-ink">
-      <AnimatePresence>{!opened && <Envelope onOpen={handleOpen} />}</AnimatePresence>
+    <div className={isParents ? 'parents-theme' : 'min-h-screen bg-cream font-serif-sc text-ink'}>
+      <AnimatePresence>
+        {!opened && (isParents ? <ParentsEnvelope onOpen={handleOpen} /> : <Envelope onOpen={handleOpen} />)}
+      </AnimatePresence>
 
-      <main>
-        <Hero opened={opened} />
-        <Announcement />
-        <Gallery />
-        <Events />
-        <Countdown />
-        <Thanks />
+      <main inert={!opened} aria-hidden={!opened}>
+        {isParents ? <ParentsInvitation opened={opened} /> : (
+          <>
+            <Hero opened={opened} />
+            <Announcement />
+            <Gallery />
+            <Events />
+            <Countdown />
+            <Thanks />
+          </>
+        )}
       </main>
 
       {invitation.musicUrl && (

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 /** 自动滚动速度（px/秒），想让请柬翻得更快就调大这个值 */
-const SPEED = 60
+const SPEED = 120
 /** 开启后延迟启动，等信封淡出、封面入场动画结束 */
 const DELAY_MS = 900
 /** 起步加速时间：速度从 0 缓到全速，避免刚开始就突然滑动 */

@@ -1,30 +1,30 @@
 /**
  * 请柬全部文案与数据 —— 换成你自己的信息只需要改这个文件。
  *
- * 有两个版本，用网址参数区分（发给谁就用哪条链接）：
- *   新人发给朋友：https://你的域名/
- *   父母发给他们的朋友：https://你的域名/?from=parents
+ * 三个版本，用网址参数区分（发给谁就用哪条链接）：
+ *   新人版：https://你的域名/
+ *   男方父母版：https://你的域名/?from=groom-parents
+ *   女方父母版：https://你的域名/?from=bride-parents
+ *   兼容旧链接：https://你的域名/?from=parents（等同男方父母版）
+ *   未填写 from 或其他值：一律展示原来的新人版。
  *
  * 注意：index.html 里的 title / og 标签是静态的（微信、iMessage 抓不到 JS 渲染结果），
  * 所以那里写的是不带发送人视角的描述。
  */
 
-/** 发送人视角：couple = 新人自己发；parents = 父母发给自己的朋友 */
-export type Audience = 'couple' | 'parents'
+/** 发送人视角：新人、男方父母、女方父母。 */
+export type Audience = 'couple' | 'groom-parents' | 'bride-parents'
+export type ParentAudience = Exclude<Audience, 'couple'>
 
 const groomName = '赵杰'
 const brideName = '梁紫艺'
-
-/** 父亲 / 母亲姓名（父母版本用，也会出现在邀请语和署名里） */
-const father = '赵壮虎'
-const mother = '刘永娟'
 
 export interface Host {
   label: string
   name: string
 }
 
-/** 两个版本共用的内容：日期、婚宴、地图、相册、备案等 */
+/** 三个版本共用的默认内容：日期、婚宴、地图、相册、备案等 */
 const shared = {
   groom: { avatar: '/photos/groom_avatar.webp', name: groomName, fullName: groomName },
   bride: { avatar: '/photos/bride_avatar.webp', name: brideName, fullName: brideName },
@@ -71,9 +71,61 @@ const shared = {
   },
 }
 
-/** 随发送人视角变化的文案（以后若要女方父母版：女儿 / 女婿，照抄一份改角色即可） */
-const copies = {
-  couple: {
+/**
+ * 父母版独立配置：双方姓名、称呼、婚宴时间及地图都可分别维护。
+ * 女方版本仅以「女儿 / 女婿」邀请，不展示父母姓名或父母署名。
+ * 若女方另办婚宴，在 bride-parents 的 event 内修改时间、地点与 amap.keyword。
+ */
+interface ParentFamily {
+  father: string
+  mother: string
+  familyLabel: string
+  fallbackHost: string
+  envelopeRoles: string
+  groomRole: string
+  brideRole: string
+  event: Pick<typeof shared, 'date' | 'dateText' | 'weekdayText' | 'lunarText' | 'banquet' | 'amap'>
+}
+
+export const parentFamilies: Record<ParentAudience, ParentFamily> = {
+  'groom-parents': {
+    father: '赵壮虎',
+    mother: '刘永娟',
+    familyLabel: '赵府',
+    fallbackHost: '新郎父母',
+    envelopeRoles: '儿子 · 儿媳',
+    groomRole: '儿子',
+    brideRole: '儿媳',
+    event: {
+      date: shared.date,
+      dateText: shared.dateText,
+      weekdayText: shared.weekdayText,
+      lunarText: shared.lunarText,
+      banquet: { ...shared.banquet },
+      amap: { ...shared.amap },
+    },
+  },
+  'bride-parents': {
+    father: '',
+    mother: '',
+    familyLabel: '梁府',
+    fallbackHost: '',
+    envelopeRoles: '女儿 · 女婿',
+    groomRole: '女婿',
+    brideRole: '女儿',
+    event: {
+      date: shared.date,
+      dateText: shared.dateText,
+      weekdayText: shared.weekdayText,
+      lunarText: shared.lunarText,
+      banquet: { ...shared.banquet },
+      amap: { ...shared.amap },
+    },
+  },
+}
+
+/** 新人版原有文案保持不变。 */
+const coupleCopy = {
     pageTitle: `${groomName} & ${brideName} · 婚礼请柬`,
     /** 新人卡片上的身份 */
     groomRole: '新郎',
@@ -96,56 +148,76 @@ const copies = {
       title: '感谢你们的见证与祝福',
       message: '人生最美好的时刻，有幸与你们一同分享。',
     },
-  },
-  parents: {
-    pageTitle: `${father} · ${mother} 敬邀 · ${groomName}与${brideName}婚礼`,
-    /** 父母视角下两位新人分别是「儿子」「儿媳」 */
-    groomRole: '儿子',
-    brideRole: '儿媳',
-    hosts: [
-      { label: '父亲', name: father },
-      { label: '母亲', name: mother },
-    ] as Host[],
-    hostLine: `${father} · ${mother} 敬邀`,
-    heroTagline: '儿子儿媳 新婚志喜',
-    announcement: ['喜结良缘 佳偶天成', '谨备薄酒 恭候亲友'],
-    inviteLines: [
-      '谨以父母之心邀您',
-      `见证儿子 ${groomName} 与 儿媳 ${brideName} 的婚礼`,
-      '与我们一同分享这份喜悦',
-    ],
-    countdownPrefix: '距离孩子们的婚礼',
-    countdownDone: '孩子们已喜结连理 ❦',
-    thanks: {
-      title: '感谢您的祝福与见证',
-      message: `儿子${groomName}与儿媳${brideName}的新婚之喜\n承蒙您来同贺。`,
-    },
-  },
+  }
+
+/** 仅接受这三个明确的父母版参数，其余参数回退到原来的新人版。 */
+export function resolveAudience(search: string): Audience {
+  const from = new URLSearchParams(search).get('from')
+  if (from === 'parents' || from === 'groom-parents') return 'groom-parents'
+  if (from === 'bride-parents') return 'bride-parents'
+  return 'couple'
 }
 
-/** ?from=parents（也接受 parent / 父母）切到父母版本，其余一律是新人版本 */
-function resolveAudience(search: string): Audience {
-  const raw = (new URLSearchParams(search).get('from') ?? '').trim().toLowerCase()
-  return raw === 'parents' || raw === 'parent' || raw === '父母' ? 'parents' : 'couple'
+/** 纯配置解析函数，便于验证参数及以后扩展独立页面。 */
+export function getInvitation(search: string) {
+  const audience = resolveAudience(search)
+  const family = audience === 'couple' ? null : parentFamilies[audience]
+  const brideFirst = audience === 'bride-parents'
+  const hosts: Host[] = family && !brideFirst
+    ? [
+        { label: '父亲', name: family.father },
+        { label: '母亲', name: family.mother },
+      ].filter((host) => Boolean(host.name.trim()))
+    : []
+  const hostNames = hosts.map((host) => host.name).join(' · ')
+  const hostLine = family && !brideFirst ? `${hostNames || family.fallbackHost} 敬邀` : null
+  const childrenLine = family
+    ? brideFirst
+      ? `女儿 ${brideName} 与 女婿 ${groomName}`
+      : `儿子 ${groomName} 与 儿媳 ${brideName}`
+    : ''
+  const copy = family
+    ? {
+        pageTitle: brideFirst
+          ? `女儿${brideName}与女婿${groomName} · 婚礼请柬`
+          : `${hostLine} · ${groomName}与${brideName}婚礼`,
+        groomRole: family.groomRole,
+        brideRole: family.brideRole,
+        hosts,
+        hostLine,
+        heroTagline: brideFirst ? '女儿女婿 新婚志喜' : '儿子儿媳 新婚志喜',
+        announcement: ['吾家有喜 喜结良缘', '谨备薄酒 恭候亲友'],
+        inviteLines: [brideFirst ? '诚邀您拨冗莅临' : '谨以父母之心邀您', `见证${childrenLine}的婚礼`, '与我们一同分享这份喜悦'],
+        countdownPrefix: '距离孩子们的婚礼',
+        countdownDone: '孩子们已喜结连理 ❦',
+        thanks: {
+          title: '感谢您的祝福与见证',
+          message: `${childrenLine}的新婚之喜\n承蒙您来同贺。`,
+        },
+      }
+    : coupleCopy
+
+  return {
+    ...shared,
+    ...(family?.event ?? {}),
+    audience,
+    familyLabel: family?.familyLabel ?? '',
+    envelopeRoles: family?.envelopeRoles ?? '',
+    brideFirst,
+    pageTitle: copy.pageTitle,
+    groom: { ...shared.groom, role: copy.groomRole },
+    bride: { ...shared.bride, role: copy.brideRole },
+    hosts: copy.hosts,
+    hostLine: copy.hostLine,
+    heroTagline: copy.heroTagline,
+    announcement: copy.announcement,
+    inviteLines: copy.inviteLines,
+    countdownPrefix: copy.countdownPrefix,
+    countdownDone: copy.countdownDone,
+    thanks: copy.thanks,
+  }
 }
 
-const audience = resolveAudience(typeof window === 'undefined' ? '' : window.location.search)
-const copy = copies[audience]
-
-export const invitation = {
-  ...shared,
-  audience,
-  pageTitle: copy.pageTitle,
-  groom: { ...shared.groom, role: copy.groomRole },
-  bride: { ...shared.bride, role: copy.brideRole },
-  hosts: copy.hosts,
-  hostLine: copy.hostLine,
-  heroTagline: copy.heroTagline,
-  announcement: copy.announcement,
-  inviteLines: copy.inviteLines,
-  countdownPrefix: copy.countdownPrefix,
-  countdownDone: copy.countdownDone,
-  thanks: copy.thanks,
-}
+export const invitation = getInvitation(typeof window === 'undefined' ? '' : window.location.search)
 
 export type Invitation = typeof invitation
