@@ -157,6 +157,9 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
             </p>
             <p className="mt-4 text-lg tracking-[0.3em] text-sand">❦</p>
             <p className="mt-2 text-sm tracking-[0.25em] text-ink/70">{invitation.dateText}</p>
+            {invitation.hostLine && (
+              <p className="mt-3 text-[11px] tracking-[0.2em] text-sand">{invitation.hostLine}</p>
+            )}
             <p className="mt-6 text-base tracking-[0.5em] text-wine">敬请光临</p>
 
             <button

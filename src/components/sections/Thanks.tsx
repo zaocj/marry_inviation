@@ -25,7 +25,7 @@ export default function Thanks() {
         </motion.h2>
 
         <motion.p
-          className="mt-6 leading-loose text-ink/70"
+          className="mt-6 whitespace-pre-line leading-loose text-ink/70"
           initial={REVEAL_FROM}
           whileInView={REVEAL_TO}
           viewport={REVEAL_VIEWPORT}
@@ -46,6 +46,9 @@ export default function Thanks() {
             {invitation.groom.fullName} & {invitation.bride.fullName}
           </p>
           <p className="text-xs tracking-[0.4em] text-sand">{invitation.dateText}</p>
+          {invitation.hostLine && (
+            <p className="mt-1 text-xs tracking-[0.3em] text-sand/80">{invitation.hostLine}</p>
+          )}
         </motion.div>
 
         <p className="mt-16 border-t border-champagne/60 pt-6 text-[11px] tracking-[0.3em] text-sand/70">

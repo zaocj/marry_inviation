@@ -44,7 +44,7 @@ export default function Countdown() {
             viewport={REVEAL_VIEWPORT}
             transition={REVEAL_TRANSITION}
           >
-            我们已喜结连理 ❦
+            {invitation.countdownDone}
           </motion.p>
         ) : (
           <motion.div
@@ -62,7 +62,7 @@ export default function Countdown() {
         )}
 
         <p className="mt-10 text-center text-sm tracking-[0.3em] text-champagne/70">
-          距离我们的婚礼 {past ? '' : '还有'}
+          {invitation.countdownPrefix} {past ? '' : '还有'}
         </p>
 
         <WeddingCalendar />

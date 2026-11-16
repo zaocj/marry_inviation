@@ -15,6 +15,11 @@ export default function App() {
   const [opened, setOpened] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 
+  // 父母版与新人版的浏览器标题不同，index.html 里写的是新人版
+  useEffect(() => {
+    document.title = invitation.pageTitle
+  }, [])
+
   // 信封页显示期间锁定滚动，开启后回到页面顶部
   useEffect(() => {
     document.body.style.overflow = opened ? '' : 'hidden'

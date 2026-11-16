@@ -97,13 +97,13 @@ export default function Announcement() {
       <div className="relative mx-auto mt-14 max-w-3xl px-6">
         <div className="relative grid grid-cols-2 items-stretch gap-4 sm:gap-6">
           <PersonCard
-            role="新郎"
+            role={invitation.groom.role}
             fullName={invitation.groom.fullName}
             avatar={invitation.groom.avatar}
             delay={0.1}
           />
           <PersonCard
-            role="新娘"
+            role={invitation.bride.role}
             fullName={invitation.bride.fullName}
             avatar={invitation.bride.avatar}
             delay={0.16}
@@ -117,19 +117,26 @@ export default function Announcement() {
       </div>
 
       <div className="relative mx-auto mt-12 max-w-2xl px-6 text-center">
-        <motion.p
-          className="leading-loose text-ink/70"
+        <motion.div
           initial={REVEAL_FROM}
           whileInView={REVEAL_TO}
           viewport={REVEAL_VIEWPORT}
           transition={{ ...REVEAL_TRANSITION, delay: 0.28 }}
         >
-          我们诚挚地邀请您
-          <br />
-          见证 {invitation.groom.fullName} 与 {invitation.bride.fullName} 的幸福时刻
-          <br />
-          与我们一同分享这份喜悦
-        </motion.p>
+          {/* 父母版本：先署父亲母亲的名字，再写邀请语 */}
+          {invitation.hosts.length > 0 && (
+            <p className="mb-5 text-sm tracking-[0.3em] text-gold">
+              {invitation.hosts.map((host) => `${host.label} ${host.name}`).join(' · ')} 敬邀
+            </p>
+          )}
+          <p className="leading-loose text-ink/70">
+            {invitation.inviteLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </p>
+        </motion.div>
       </div>
     </section>
   )
