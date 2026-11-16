@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { createServer } from 'vite'
 
-const server = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
+const server = await createServer({ cacheDir: 'node_modules/.vite-tests/sharing', server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
 const { getShareMetadata } = await server.ssrLoadModule('/src/config/share.ts')
 const { renderShareHtml } = await server.ssrLoadModule('/src/lib/share-html.ts')
 const { parentFamilies } = await server.ssrLoadModule('/src/config/invitation.ts')

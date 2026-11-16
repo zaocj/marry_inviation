@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { createServer } from 'vite'
 
 // 使用项目已有的 Vite 转换 TS，兼容 package.json 支持的 Node 版本。
-const server = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
+const server = await createServer({ cacheDir: 'node_modules/.vite-tests/invitation', server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
 const { getInvitation, parentFamilies, resolveAudience } = await server.ssrLoadModule('/src/config/invitation.ts')
 
 try {
@@ -57,14 +57,16 @@ try {
     const brideEvent = parentFamilies['bride-parents'].event
     const oldVenue = brideEvent.banquet.venue
     const oldKeyword = brideEvent.amap.keyword
+    const groomBefore = structuredClone(getInvitation('/groom-parents'))
+    const coupleBefore = structuredClone(getInvitation('/'))
     try {
       brideEvent.banquet.venue = '测试女方婚宴地点'
       brideEvent.amap.keyword = '测试女方导航地点'
       assert.equal(getInvitation('/bride-parents').banquet.venue, '测试女方婚宴地点')
       assert.equal(getInvitation('/bride-parents').amap.keyword, '测试女方导航地点')
-      assert.equal(getInvitation('/groom-parents').banquet.venue, oldVenue)
-      assert.equal(getInvitation('/').banquet.venue, oldVenue)
-      assert.equal(getInvitation('/groom-parents').amap.keyword, oldKeyword)
+      assert.equal(getInvitation('/groom-parents').banquet.venue, groomBefore.banquet.venue)
+      assert.equal(getInvitation('/').banquet.venue, coupleBefore.banquet.venue)
+      assert.equal(getInvitation('/groom-parents').amap.keyword, groomBefore.amap.keyword)
     } finally {
       brideEvent.banquet.venue = oldVenue
       brideEvent.amap.keyword = oldKeyword

@@ -117,8 +117,15 @@ export const parentFamilies: Record<ParentAudience, ParentFamily> = {
       dateText: shared.dateText,
       weekdayText: shared.weekdayText,
       lunarText: shared.lunarText,
-      banquet: { ...shared.banquet },
-      amap: { ...shared.amap },
+      banquet: {
+        ...shared.banquet,
+        venue: '山西省太原市清徐县清徐喜来澄大酒店',
+        address: '太原市清徐县039省道东侧',
+      },
+      amap: {
+        ...shared.amap,
+        keyword: '山西省太原市清徐县清徐喜来澄大酒店',
+      },
     },
   },
 }
