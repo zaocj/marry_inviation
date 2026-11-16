@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { createServer } from 'vite'
 
 // 使用项目已有的 Vite 转换 TS，兼容 package.json 支持的 Node 版本。
-const server = await createServer({ server: { middlewareMode: true }, appType: 'custom' })
+const server = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
 const { getInvitation, parentFamilies, resolveAudience } = await server.ssrLoadModule('/src/config/invitation.ts')
 
 try {

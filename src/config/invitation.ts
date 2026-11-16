@@ -7,8 +7,8 @@
  *   女方父母版：https://你的域名/bride-parents
  *   根路径或其他路径：一律展示原来的新人版，不再通过查询参数切换版本。
  *
- * 注意：index.html 里的 title / og 标签是静态的（微信、iMessage 抓不到 JS 渲染结果），
- * 所以那里写的是不带发送人视角的描述。
+ * 静态分享：src/config/share.ts 从这里读取各版本资料，Vite 为每个入口直接生成
+ * 独立的 title / description / og 标签，不依赖浏览器执行 React。
  */
 
 /** 发送人视角：新人、男方父母、女方父母。 */
