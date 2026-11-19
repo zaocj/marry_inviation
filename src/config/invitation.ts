@@ -59,7 +59,7 @@ const shared = {
   gallery: Array.from({ length: 12 }, (_, i) => `/photos/section_${i + 1}.webp`),
 
   /** 背景音乐：把 mp3 放到 public/ 后填路径，例如 '/music.mp3'，留空则不显示音乐按钮 */
-  musicUrl: '/audio/background.mp3',
+  musicUrl: '/audio/background-96k.mp3',
 
   /** 页脚备案信息 */
   icp: {
