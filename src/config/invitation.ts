@@ -186,7 +186,7 @@ export function getInvitation(pathname: string) {
     ? {
         pageTitle: brideFirst
           ? `女儿${brideName}与女婿${groomName} · 婚礼请柬`
-          : `儿子${groomName}与儿媳${brideName} · 婚礼请柬`,
+          : '儿子囍儿媳 · 婚礼请柬',
         groomRole: family.groomRole,
         brideRole: family.brideRole,
         hosts,
